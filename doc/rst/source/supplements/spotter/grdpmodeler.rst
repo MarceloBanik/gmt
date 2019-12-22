@@ -114,46 +114,29 @@ Examples
 We will use a grid with Pacific crust ages (pac_age.nc), a plate motion
 model (Pac_APM.txt), and a polygon that contains the outline of the
 present Pacific plate (pac_clip_path.txt). To evaluate the plate motion
-azimuths at the present time for the Pacific, try
+azimuths at the present time for the Pacific, try::
 
-   ::
-
-    gmt grdpmodeler pac_age.nc -EPac_APM.txt -V -Fpac_clip_path.txt \
-                    -Gpac_dir_0.nc -Sa -T0
+    gmt grdpmodeler pac_age.nc -EPac_APM.txt -V -Fpac_clip_path.txt -Gpac_dir_0.nc -Sa -T0
 
 To determine the changes in latitude since crust formation for the
-entire Pacific, try
+entire Pacific, try::
 
-   ::
-
-    gmt grdpmodeler pac_age.nc -EPac_APM.txt -V -Fpac_clip_path.txt \
-                    -Gpac_dlat.nc -Sy
+    gmt grdpmodeler pac_age.nc -EPac_APM.txt -V -Fpac_clip_path.txt -Gpac_dlat.nc -Sy
 
 To determine the plate motion velocities in effect when the Pacific crust was
-formed, try
+formed, try::
 
-   ::
+    gmt grdpmodeler pac_age.nc -EPac_APM.txt -V -Fpac_clip_path.txt -Gpac_vel.nc -Sv
 
-    gmt grdpmodeler pac_age.nc -EPac_APM.txt -V -Fpac_clip_path.txt \
-                    -Gpac_vel.nc -Sv
+To determine how far the crust has moved since formation, try::
 
-To determine how far the crust has moved since formation, try
+    gmt grdpmodeler pac_age.nc -EPac_APM.txt -V -Fpac_clip_path.txt -Gpac_dist.nc -Sd
 
-   ::
+To save the coordinates of the crust's formation to separate grids, try::
 
-    gmt grdpmodeler pac_age.nc -EPac_APM.txt -V -Fpac_clip_path.txt \
-                    -Gpac_dist.nc -Sd
+    gmt grdpmodeler pac_age.nc -EPac_APM.txt -V -Fpac_clip_path.txt -Gpac_origin_%s.nc -SXY
 
-To save the coordinates of the crust's formation to separate grids, try
-
-   ::
-
-    gmt grdpmodeler pac_age.nc -EPac_APM.txt -V -Fpac_clip_path.txt \
-                    -Gpac_origin_%s.nc -SXY
-
-To repeat the same exercise but save output *lon,lat,age,xorigin,yorigin* to a table, use
-
-   ::
+To repeat the same exercise but save output *lon,lat,age,xorigin,yorigin* to a table, use::
 
     gmt grdpmodeler pac_age.nc -EPac_APM.txt -V -Fpac_clip_path.txt -SXY > origin.txt
 
